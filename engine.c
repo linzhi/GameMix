@@ -111,29 +111,29 @@ void engine_exit()
 
 void engine_show_game_menu()
 {
-	clear();
+    clear();
 
-	attron(COLOR_PAIR(GREEN_BLACK));
-        
+    attron(COLOR_PAIR(GREEN_BLACK));
+    
     box(stdscr, ACS_VLINE, ACS_HLINE);
-
-	mvprintw(3, 21,  " _______  _______  ________  _______ ");
-	mvprintw(4, 21,  "|       ||   _   ||        ||       |");
-	mvprintw(5, 21,  "|   ____||  |_|  ||  _  _  ||   ____|");
-	mvprintw(6, 21,  "|  | ___ |       || | || | ||  |____ ");
-	mvprintw(7, 21,  "|  ||_  ||   _   || | || | ||   ____|");
-	mvprintw(8, 21,  "|  |__| ||  | |  || | || | ||  |____ ");
-	mvprintw(9, 21,  "|_______||__| |__||_| || |_||_______|");
-	mvprintw(10, 21, "                                     ");
-	mvprintw(11, 21, "|        Welcom to the GameMix      |");
-	mvprintw(12, 21, "|                                   |");
-	mvprintw(13, 21, "|                                   |");
-	mvprintw(14, 21, "|              1 Snake              |");
-	mvprintw(15, 21, "|              2 Tank               |");
-	mvprintw(16, 21, "|              3 PushBox            |");
-	mvprintw(17, 21, "|___________________________________|");
-
-	refresh();
+    
+    mvprintw(3, 21,  " _______  _______  ________  _______ ");
+    mvprintw(4, 21,  "|       ||   _   ||        ||       |");
+    mvprintw(5, 21,  "|   ____||  |_|  ||  _  _  ||   ____|");
+    mvprintw(6, 21,  "|  | ___ |       || | || | ||  |____ ");
+    mvprintw(7, 21,  "|  ||_  ||   _   || | || | ||   ____|");
+    mvprintw(8, 21,  "|  |__| ||  | |  || | || | ||  |____ ");
+    mvprintw(9, 21,  "|_______||__| |__||_| || |_||_______|");
+    mvprintw(10, 21, "                                     ");
+    mvprintw(11, 21, "|        Welcom to the GameMix      |");
+    mvprintw(12, 21, "|                                   |");
+    mvprintw(13, 21, "|                                   |");
+    mvprintw(14, 21, "|              1 Snake              |");
+    mvprintw(15, 21, "|              2 Tank               |");
+    mvprintw(16, 21, "|              3 PushBox            |");
+    mvprintw(17, 21, "|___________________________________|");
+    
+    refresh();
 }
 
 void engine_show_game_over()
@@ -177,23 +177,23 @@ void engine_show_snake_game_start()
 
     while (count--)
     {
-	    attron(COLOR_PAIR(YELLOW_BLACK));
-
+        attron(COLOR_PAIR(YELLOW_BLACK));
+        
         box(stdscr, ACS_VLINE, ACS_HLINE);
         
         mvprintw(2, 13,  " ________   _        _       _       _         _______ ");
-	    mvprintw(3, 13,  "|  ______| | ||     | |     | |     | |    _  |  _____|");
-	    mvprintw(4, 13,  "| |        | |||    | |    || ||    | |   | | | |      ");
-	    mvprintw(5, 13,  "| |______  | | ||   | |   ||   ||   | |  _| | | |_____ ");
-	    mvprintw(6, 13,  "|______  | | |  ||  | |  ||_____||  | |_| __| |  _____|");
-	    mvprintw(7, 13,  "       | | | |   || | | |_________| |  _  __  | |      ");
-	    mvprintw(8, 13,  " ______| | | |    ||| | ||       || | | |_  | | |_____ ");
-	    mvprintw(9, 13,  "|________| |_|     ||_| ||       || |_|   |_| |_______|");
+        mvprintw(3, 13,  "|  ______| | ||     | |     | |     | |    _  |  _____|");
+        mvprintw(4, 13,  "| |        | |||    | |    || ||    | |   | | | |      ");
+        mvprintw(5, 13,  "| |______  | | ||   | |   ||   ||   | |  _| | | |_____ ");
+        mvprintw(6, 13,  "|______  | | |  ||  | |  ||_____||  | |_| __| |  _____|");
+        mvprintw(7, 13,  "       | | | |   || | | |_________| |  _  __  | |      ");
+        mvprintw(8, 13,  " ______| | | |    ||| | ||       || | | |_  | | |_____ ");
+        mvprintw(9, 13,  "|________| |_|     ||_| ||       || |_|   |_| |_______|");
         mvprintw(10, 13, "                                                       ");
         mvprintw(11, 13, "                                                       ");
         mvprintw(12, 13, "                                                       ");
         mvprintw(13, 13, "                 Game Loading... %d                    ", count);
-
+        
         refresh();
         sleep(1);
     }

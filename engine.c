@@ -47,8 +47,7 @@ void snake_borders_init()
 
     int i, j;
 
-    //close the snake meun display
-	attroff(COLOR_PAIR(WHITE_BLACK));
+    attroff(COLOR_PAIR(WHITE_BLACK));
     attron(COLOR_PAIR(GREEN_BLACK));
 
     for (i = 0; i < LINES; i++)
@@ -146,26 +145,26 @@ void engine_show_game_over()
 
     box(stdscr, ACS_VLINE, ACS_HLINE);
 
-	mvprintw(2, 21,  " _______  _______  ________  _______ ");
-	mvprintw(3, 21,  "|       ||   _   ||        ||       |");
-	mvprintw(4, 21,  "|   ____||  |_|  ||  _  _  ||   ____|");
-	mvprintw(5, 21,  "|  | ___ |       || | || | ||  |____ ");
-	mvprintw(6, 21,  "|  ||_  ||   _   || | || | ||   ____|");
-	mvprintw(7, 21,  "|  |__| ||  | |  || | || | ||  |____ ");
-	mvprintw(8, 21,  "|_______||__| |__||_| || |_||_______|");
-	mvprintw(9, 21,  " _______  __   __  ________  _______ ");
-	mvprintw(10, 21, "|       ||  | |  ||        ||  ___  |");
-	mvprintw(11, 21, "|   _   ||  |_|  ||     ___|| |___| |");
-	mvprintw(12, 21, "|  | |  ||       ||    |___ |  ___  |");
-	mvprintw(13, 21, "|  |_|  | |     | |     ___|| |   | |");
-	mvprintw(14, 21, "|       |  |   |  |    |___ | |   | |");
-	mvprintw(15, 21, "|_______|   |_|   |________||_|   |_|");
-	mvprintw(16, 21, " ___________________________________ ");
-	mvprintw(17, 21, "|                                   |");
-	mvprintw(18, 21, "|      Please waiting to retry      |");
-	mvprintw(19, 21, "|___________________________________|");
-	
-	refresh();
+    mvprintw(2, 21,  " _______  _______  ________  _______ ");
+    mvprintw(3, 21,  "|       ||   _   ||        ||       |");
+    mvprintw(4, 21,  "|   ____||  |_|  ||  _  _  ||   ____|");
+    mvprintw(5, 21,  "|  | ___ |       || | || | ||  |____ ");
+    mvprintw(6, 21,  "|  ||_  ||   _   || | || | ||   ____|");
+    mvprintw(7, 21,  "|  |__| ||  | |  || | || | ||  |____ ");
+    mvprintw(8, 21,  "|_______||__| |__||_| || |_||_______|");
+    mvprintw(9, 21,  " _______  __   __  ________  _______ ");
+    mvprintw(10, 21, "|       ||  | |  ||        ||  ___  |");
+    mvprintw(11, 21, "|   _   ||  |_|  ||     ___|| |___| |");
+    mvprintw(12, 21, "|  | |  ||       ||    |___ |  ___  |");
+    mvprintw(13, 21, "|  |_|  | |     | |     ___|| |   | |");
+    mvprintw(14, 21, "|       |  |   |  |    |___ | |   | |");
+    mvprintw(15, 21, "|_______|   |_|   |________||_|   |_|");
+    mvprintw(16, 21, " ___________________________________ ");
+    mvprintw(17, 21, "|                                   |");
+    mvprintw(18, 21, "|      Please waiting to retry      |");
+    mvprintw(19, 21, "|___________________________________|");
+    
+    refresh();
 }
 
 void engine_show_snake_game_start()
@@ -173,16 +172,16 @@ void engine_show_snake_game_start()
     int count = 6;
 
     clear();
-
-	attroff(COLOR_PAIR(GREEN_BLACK));
+    
+    attroff(COLOR_PAIR(GREEN_BLACK));
 
     while (count--)
     {
 	    attron(COLOR_PAIR(YELLOW_BLACK));
 
         box(stdscr, ACS_VLINE, ACS_HLINE);
-
-	    mvprintw(2, 13,  " ________   _        _       _       _         _______ ");
+        
+        mvprintw(2, 13,  " ________   _        _       _       _         _______ ");
 	    mvprintw(3, 13,  "|  ______| | ||     | |     | |     | |    _  |  _____|");
 	    mvprintw(4, 13,  "| |        | |||    | |    || ||    | |   | | | |      ");
 	    mvprintw(5, 13,  "| |______  | | ||   | |   ||   ||   | |  _| | | |_____ ");

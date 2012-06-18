@@ -11,7 +11,24 @@ main function.
 
 "keyinput.c"
 -------------
-Contral the game
+Contral the game, such as, int the snake game, you can contral the snake's move direction.
 
 "engine.c"
 -----------
+Init the curses library
+
+"snake.c"
+----------
+Include the snake's parameter, such as speed, siez and so on.
+
+
+Bug
+=========
+* Don't consider thr snake's head eat tail.
+* Don't design the speed's increase.
+---------------------------------------
+
+Deadline
+=========
+2012-6-30
+----------

@@ -31,21 +31,14 @@ void key_input()
         case ERR:
             break;
 
-        // snake
         case '1':
             snake_game = 1;
             break;
 
-        // press the space key to start snake game
-        case KEY_SPACE:
-            break;
-
-        // tank
         case '2':
             tank_game = 1;
             break;
 
-        // pushbox
         case '3':
             pushbox_game = 1;
             break;
@@ -72,9 +65,11 @@ void key_input()
         case KEY_ENTER:
             key_enter = 1;
 
-        // quit to the terminal
         case KEY_ESC:
             esc_key = 1;
+            break;
+        
+        case KEY_SPACE:
             break;
 
         default:

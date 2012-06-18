@@ -1,23 +1,23 @@
 GameMix
 ==========
 
->This are only a traditional game,such as snake game which you can contral a snake to eat something.The algorithm is not so complex.moreover the tankgame is also could be added into this.
+This are only a traditional game,such as snake game which you can contral a snake to eat something.The algorithm is not so complex.moreover the tankgame is also could be added into this.
 
->In this demo I have used a graphics library called curses,include a header file curses.h.
+In this demo I have used a graphics library called curses,include a header file curses.h.
 
 Code Tree
 ----------
 * main.c
->main function.
+main function.
 
 * keyinput.c
->Contral the game, such as, int the snake game, you can contral the snake's move direction.
+Contral the game, such as, int the snake game, you can contral the snake's move direction.
 
 * engine.c
->Init the curses library
+Init the curses library
 
-* snake.c"
->Include the snake's parameter, such as speed, siez and so on.
+* snake.c
+Include the snake's parameter, such as speed, siez and so on.
 
 
 Bug
@@ -27,5 +27,5 @@ Bug
 
 Deadline
 -------------
->2012-6-30
+* 2012-6-30
 

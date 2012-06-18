@@ -7,19 +7,19 @@
 #include <stdio.h>
 #include <curses.h>
 #include "snake.h"
+#include "engine.h"
 
 static char SNAKE_BODY_CHAR = 'O';
 static char SNAKE_HEAD_CHAR = 'X';
 
 struct snake_t snake;
-struct snake_body_t snake_body;
 
 extern void key_input();
-extern void engine_show_game_over();
-extern void engine_show_game_menu();
+extern void snake_fruit_init();
 
 extern enum Colors { BLUE_BLACK = 1, YELLOW_BLACK, RED_BLACK,
                      WHITE_BLACK, GREEN_BLACK, GREEN_RED };
+
 extern int key_up;
 extern int key_down;
 extern int key_left;
@@ -61,6 +61,30 @@ void snake_init()
     refresh();
 }
 
+void snake_move_init()
+{
+    //move left
+    while (1)
+    {
+        mvaddch(snake.body[snake.size-1].y, 
+                snake.body[snake.size-1].x, ' ');
+
+        int i;
+
+        for (i = (snake.size - 1); i > 0; i--)
+        {
+            snake.body[i].x = snake.body[i-1].x;
+            snake.body[i].y = snake.body[i-1].y;
+        }
+    
+        snake.body[0].y = snake.body[0].y - snake.speed;
+    
+        mvaddch(snake.body[0].y, snake.body[0].x, SNAKE_HEAD_CHAR);
+
+        refresh();
+    }
+}
+
 void snake_move()
 {
     key_input();
@@ -87,9 +111,22 @@ void snake_move()
                     SNAKE_BODY_CHAR);
         }
 
+        if (snake_eat_fruit())
+        {
+            snake.score = snake.score + 5;
+            snake_increase();
+            mvaddch(snake.body[snake.size-1].y, 
+                    snake.body[snake.size-1].x, SNAKE_BODY_CHAR);
+            snake_fruit_init();
+
+            attroff(COLOR_PAIR(RED_BLACK));
+            attron(COLOR_PAIR(BLUE_BLACK));
+        }
+
         if (snake.body[0].y == 0)
         {
             engine_show_game_over();
+            free(snake.body);
             sleep(3);
             engine_show_game_menu();
         }
@@ -119,9 +156,22 @@ void snake_move()
                     SNAKE_BODY_CHAR);
         }
 
+        if (snake_eat_fruit())
+        {
+            snake.score = snake.score + 5;
+            snake_increase();
+            mvaddch(snake.body[snake.size-1].y, 
+                    snake.body[snake.size-1].x, SNAKE_BODY_CHAR);
+            snake_fruit_init();
+
+            attroff(COLOR_PAIR(RED_BLACK));
+            attron(COLOR_PAIR(BLUE_BLACK));
+        }
+
         if (snake.body[0].y == LINES - 1)
         {
             engine_show_game_over();
+            free(snake.body);
             sleep(3);
             engine_show_game_menu();
         }
@@ -151,9 +201,23 @@ void snake_move()
                     SNAKE_BODY_CHAR);
         }
         
+        if (snake_eat_fruit())
+        {
+            snake.score = snake.score + 5;
+            snake_increase();
+            mvaddch(snake.body[snake.size].y, 
+                    snake.body[snake.size].x, SNAKE_BODY_CHAR);
+            snake_fruit_init();
+
+            attroff(COLOR_PAIR(RED_BLACK));
+            attron(COLOR_PAIR(BLUE_BLACK));
+        }
+
         if (snake.body[0].x == 0)
+
         {
             engine_show_game_over();
+            free(snake.body);
             sleep(3);
             engine_show_game_menu();
         }
@@ -183,9 +247,22 @@ void snake_move()
                     SNAKE_BODY_CHAR);
         }
         
+        if (snake_eat_fruit())
+        {
+            snake.score = snake.score + 5;
+            snake_increase();
+            mvaddch(snake.body[snake.size-1].y, 
+                    snake.body[snake.size-1].x, SNAKE_BODY_CHAR);
+            snake_fruit_init();
+
+            attroff(COLOR_PAIR(RED_BLACK));
+            attron(COLOR_PAIR(BLUE_BLACK));
+        }
+
         if (snake.body[0].x == COLS - 1)
         {
             engine_show_game_over();
+            free(snake.body);
             sleep(3);
             engine_show_game_menu();
         }
@@ -198,16 +275,24 @@ void snake_move()
 
 void snake_increase()
 {
+    int body_size = sizeof(struct snake_body_t);
 
-}
+    snake.size += 1;
 
-void snake_over()
-{
+    snake.body = realloc(snake.body, (snake.size * body_size));
     
+    if (snake.body == NULL)
+    {
+        ;
+    }
 }
 
-int snake_hit_borders()
+int snake_eat_fruit()
 {
-
-
+    if ((snake.body[0].x == fruit.x_pos) && 
+        (snake.body[0].y == fruit.y_pos))
+        return 1;
+    else
+        return 0;
 }
+

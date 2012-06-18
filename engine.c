@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <curses.h>
 #include "engine.h"
+#include "snake.h"
 
 #define LEFT_EDGE 1
 #define TOP_EDGE 1
@@ -30,13 +31,23 @@ void snake_fruit_init()
 
     srand((int)time(NULL));
 
-    int random_fruit = true;
-    int valid_fruit = false;
+    int valid_fruit = 0;
 
     fruit.x_pos = (rand() % RIGHT_EDGE) + 1; 
     fruit.y_pos = (rand() % BOT_EDGE) + 1; 
 
     mvaddch(fruit.y_pos, fruit.x_pos, SNAKE_FRUIT_CHAR);
+
+    int i;
+
+    for (i = 0; i < (snake.size - 1); i++)
+    {
+        if ((fruit.x_pos == snake.body[i].x) &&
+            (fruit.y_pos == snake.body[i].y))
+        {
+            snake_fruit_init();
+        }
+    }
 
     refresh();
 }
@@ -50,7 +61,7 @@ void snake_borders_init()
     attroff(COLOR_PAIR(WHITE_BLACK));
     attron(COLOR_PAIR(GREEN_BLACK));
 
-    for (i = 0; i < LINES; i++)
+    for (i = 1; i < LINES; i++)
     {
         mvaddch(i, 0, '+');
         mvaddch(i, COLS - 1, '+');
@@ -162,7 +173,8 @@ void engine_show_game_over()
     mvprintw(16, 21, " ___________________________________ ");
     mvprintw(17, 21, "|                                   |");
     mvprintw(18, 21, "|      Please waiting to retry      |");
-    mvprintw(19, 21, "|___________________________________|");
+    mvprintw(19, 21, "|      Your score:         %d       |", snake.score);
+    mvprintw(20, 21, "|___________________________________|");
     
     refresh();
 }

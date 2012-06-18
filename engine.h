@@ -19,6 +19,8 @@ struct fruit_t
     int y_pos;
 };
 
+extern struct fruit_t fruit;
+
 void snake_borders_init();
 void snake_fruit_init();
 

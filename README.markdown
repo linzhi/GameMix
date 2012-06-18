@@ -26,6 +26,7 @@ Bug
 =========
 * Don't consider thr snake's head eat tail.
 * Don't design the speed's increase.
+
 ---------------------------------------
 
 Deadline

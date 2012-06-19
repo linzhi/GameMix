@@ -7,84 +7,11 @@
 #include "engine.h"
 #include "snake.h"
 
-#define LEFT_EDGE 1
-#define TOP_EDGE 1
-#define BOT_EDGE (LINES - 2)
-#define RIGHT_EDGE (COLS - 2)
-
-static char SNAKE_FRUIT_CHAR = '$';
-
 enum Colors { BLUE_BLACK = 1, YELLOW_BLACK, RED_BLACK, 
               WHITE_BLACK, GREEN_BLACK, GREEN_RED };
 
-struct screen_t screen;
-struct fruit_t fruit;
-
-/*
- * Snake Game
- */
-
-void snake_fruit_init()
-{
-    attroff(COLOR_PAIR(GREEN_BLACK));
-    attron(COLOR_PAIR(RED_BLACK));
-
-    srand((int)time(NULL));
-
-    int valid_fruit = 0;
-
-    fruit.x_pos = (rand() % RIGHT_EDGE) + 1; 
-    fruit.y_pos = (rand() % BOT_EDGE) + 1; 
-
-    mvaddch(fruit.y_pos, fruit.x_pos, SNAKE_FRUIT_CHAR);
-
-    int i;
-
-    for (i = 0; i < (snake.size - 1); i++)
-    {
-        if ((fruit.x_pos == snake.body[i].x) &&
-            (fruit.y_pos == snake.body[i].y))
-        {
-            snake_fruit_init();
-        }
-    }
-
-    refresh();
-}
-
-void snake_borders_init() 
-{ 
-    clear();
-
-    int i, j;
-
-    attroff(COLOR_PAIR(WHITE_BLACK));
-    attron(COLOR_PAIR(GREEN_BLACK));
-
-    for (i = 1; i < LINES; i++)
-    {
-        mvaddch(i, 0, '+');
-        mvaddch(i, COLS - 1, '+');
-    }
-
-    for (j = 0; j < COLS; j++)
-    {
-        mvaddch(0, j, '+');
-        mvaddch(LINES - 1, j, '+');
-    }
-
-    refresh();
-}
-
-/*
- * Tank Game
- *
- */
 void engine_init()
 {
-    screen.hei = 24;
-    screen.wid = 80;
-
     initscr();
 
     if (has_colors() == false)

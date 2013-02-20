@@ -1,13 +1,7 @@
-/*
- *  File: main.c
- *  Author: linzhi
- *  Day: 2012-6-8
- */
-
 #include <stdio.h>
 #include "engine.h"
 #include "keyinput.h"
-#include "snake.h"
+#include "snake/snake.h"
 
 extern int snake_game;
 extern int tank_game;

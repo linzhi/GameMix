@@ -9,4 +9,4 @@ snake.o:snake.c snake.h
 .PHONY:clean
 
 clean:
-		rm -f *.o snake
+	rm -f *.o snake

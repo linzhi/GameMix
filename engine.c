@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <curses.h>
 #include "engine.h"
-#include "snake.h"
+#include "snake/snake.h"
 
 enum Colors { BLUE_BLACK = 1, YELLOW_BLACK, RED_BLACK, 
               WHITE_BLACK, GREEN_BLACK, GREEN_RED };

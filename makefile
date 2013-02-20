@@ -1,18 +1,24 @@
-GameMix:main.o engine.o keyinput.o snake.o
-	gcc -o GameMix main.o engine.o keyinput.o snake.o -lcurses
+OUT = GameMix
+CXX = gcc
+CXXFLAGS = -Wall -g
+SUBDIRS = snake
+OBJS = main.o engine.o keyinput.o snake/snake.o
+LIBS = -lcurses
+
+$(OUT):$(OBJS)
+	$(foreach N,$(SUBDIRS),make -C $(N);) \
+	$(CXX) -o $(OUT) $(OBJS) $(LIBS)
 
 main.o:main.c keyinput.h engine.h
-	gcc -c main.c
+	$(CXX) -c $(CXXFLAGS) main.c
 
 engine.o:engine.c engine.h
-	gcc -c engine.c -lcurses
+	$(CXX) -c $(CXXFLAGS) engine.c
 
 keyinput.o:keyinput.c keyinput.h
-	gcc -c keyinput.c -lcurses
-
-snake.o:snake.c snake.h
-	gcc -c snake.c -lcurses
+	$(CXX) -c $(CXXFLAGS) keyinput.c
 
 .PHONY:clean
+
 clean:
-	-rm main.o engine.o keyinput.o snake.o
+	-rm -f $(OBJS) GameMix
